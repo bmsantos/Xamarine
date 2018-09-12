@@ -7,11 +7,9 @@ namespace Xamarine
 {
     public class Startup
     {
-        public static async Task Initialize()
-        {
+        public static async Task Initialize() =>
             await new WebServer(9696)
                   .WithModule(new ResourceFilesModule(Assembly.GetAssembly(typeof(Startup)), "wwwroot"))
                   .RunAsync();
-        }
     }
 }

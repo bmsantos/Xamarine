@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using System;
 using Xamarin.Forms;
 
 namespace Xamarine
@@ -9,12 +9,12 @@ namespace Xamarine
         {
             InitializeComponent();
             InitializeEmbeddedHost();
+            var names = typeof(MainPage).Assembly.GetManifestResourceNames();
         }
 
-        private async void InitializeEmbeddedHost()
+        private void InitializeEmbeddedHost()
         {
             Startup.Initialize();
-            await Task.Delay(5000);
             WebView.Source = "http://localhost:9696/";
         }
     }

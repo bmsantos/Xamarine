@@ -65,12 +65,12 @@ namespace Xamarine.Hosting.Modules
 
             try
             {
-                var localPath = PathResourcerize(context.RequestPathCaseSensitive());
+                var localPath = PathResourcerize(context.RequestPathCaseSensitive()).Replace(@"\", "/");
                 var partialHeader = context.RequestHeader(Headers.Range);
 
                 $"Resource System: {localPath}".Debug();
 
-                buffer = _sourceAssembly.GetManifestResourceStream($"{_resourcePathRoot}\\{localPath}");
+                buffer = _sourceAssembly.GetManifestResourceStream($"{_resourcePathRoot}/{localPath}");
 
                 // If buffer is null something is really wrong
                 if (buffer == null)
